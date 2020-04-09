@@ -1,0 +1,13 @@
+language: csharp
+mono: none
+dotnet: 3.1.201
+addons:
+  sonarcloud:
+    organization: "rugulosus"
+    token:
+      secure: "RGugLBmfG9FFy7ORw4PmlijWaoAvzTHw8znKlcjaWxzqDGGUNxlAfgUUhQlKksADsnZltan7I6MInVBt1I5hhl7uQwQkYIKFsxENeSsJaR925hCF4dmx6PZznVrwjDIf/TDsKWSPuY6IOlqgyWxVRRuVkQDz2y6XWnsiD1OMdOk2KdZHJgQR0n/FseBZPx4dSe9wyCcu8XoTgncXpqpPcK4vpmZDqvEZlXoBEt2Mj/IGtkE9a8m0vgV7o2AGY8L4yqDY5kUMXV24CNB4qD1aB3yEGgeFLw4eny8rUVr7EpV7rCGiyRdXiVA3rFLe/rg22wxlj5CXbEourBOI57Ky6Qs8qvDAAyKq0bWNWvauO9yjZ4nl9IRnhMt5C5rEEKrJDfEZhav2TdYnwYxUjEc6LN0IvhyaLyXpyVBbvbc2t401uQL0wwA5HvqUSDBkYqS/oliGldBdGRy+lR+HuzJRmKSHCJVSOJWMsxbYwp08FGLqAF3t8c45eiInJ2RlT9j2XKePQ0U7q7KG4xC/y7ECpwLC//fhvi1pSnSD09RoJaUt6VZSzBqe3P+59G+Dww1J0G51MPOY9ULCrkMj5mPhHg6wQevoPVSu5kXFhpWTx7rEj7AJqVATuM+gb6e4a2MUQDG+9wAyA4reW+TE5Hzd1oc7hZIfOsO7WcRiZOzsX2w=" # encrypted value of your token
+script:
+  - dotnet restore
+  - dotnet build ShellAnalyze.csproj
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - sonar-scanner
